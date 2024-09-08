@@ -20,6 +20,9 @@ I have created simple cuurency-converter which allows You to convert Polish Zlot
 - JavaScript ES6+
 - Immutability
 - BEM
+- Styled-Components
+- React useState Hook
+- React custom Hook
 
 ## Available Scripts
 
