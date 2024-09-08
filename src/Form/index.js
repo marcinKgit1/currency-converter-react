@@ -1,7 +1,7 @@
-import "./style.css";
 import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "./Result";
+import { Button, Field, Legend, Select, Value, Wrapper } from "./styled";
 
 export const Form = ({ calculateResult, result }) => {
   const [currency, setCurrency] = useState(currencies[0].short);
@@ -14,15 +14,14 @@ export const Form = ({ calculateResult, result }) => {
   return (
     <>
       <form className="form" onSubmit={onSubmit}>
-        <fieldset className="form__fieldset">
-          <legend className="form__legend">Przelicznik walut</legend>
+        <Wrapper>
+          <Legend>Przelicznik walut</Legend>
           <p>
             <label>
-              <span className="form__value"> Kwota w PLN*: </span>
-              <input
+              <Value> Kwota w PLN*: </Value>
+              <Field
                 value={amount}
                 onChange={({ target }) => setAmount(target.value)}
-                className="form__field"
                 type="number"
                 step="0.01"
                 min="1"
@@ -33,10 +32,9 @@ export const Form = ({ calculateResult, result }) => {
           </p>
           <p>
             <label>
-              <span className="form__value">Wybierz walutę:</span>
+              <Value>Wybierz walutę:</Value>
 
-              <select
-                className="form__field"
+              <Select
                 value={currency}
                 onChange={({ target }) => setCurrency(target.value)}
               >
@@ -45,15 +43,13 @@ export const Form = ({ calculateResult, result }) => {
                     {currency.name}
                   </option>
                 ))}
-              </select>
+              </Select>
             </label>
           </p>
           <p>
-            <button className="form__button" type="submit">
-              Przelicz
-            </button>
+            <Button>Przelicz</Button>
           </p>
-        </fieldset>
+        </Wrapper>
         <Result result={result} />
       </form>
     </>

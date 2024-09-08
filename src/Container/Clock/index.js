@@ -1,4 +1,4 @@
-import "./style.css";
+import { Wrapper } from "./styled";
 import { useCurrentDate } from "./useCurrentDate";
 
 const formatDate = (date) =>
@@ -14,5 +14,5 @@ const formatDate = (date) =>
 export const Clock = () => {
   const date = useCurrentDate();
 
-  return <div className="clock">Dzisiaj jest {formatDate(date)}</div>;
+  return <Wrapper>Dzisiaj jest {formatDate(date)}</Wrapper>;
 };
