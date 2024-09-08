@@ -3,6 +3,8 @@ import Container from "./Container";
 import { useState } from "react";
 import { currencies } from "./currencies";
 import { Clock } from "./Container/Clock";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
 function App() {
   const [result, setResult] = useState();
 
@@ -16,10 +18,12 @@ function App() {
     });
   };
   return (
-    <Container>
-      <Clock />
-      <Form result={result} calculateResult={calculateResult} />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Clock />
+        <Form result={result} calculateResult={calculateResult} />
+      </Container>
+    </ThemeProvider>
   );
 }
 
