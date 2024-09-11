@@ -5,6 +5,7 @@ import { currencies } from "./currencies";
 import { Clock } from "./Container/Clock";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
+import { GlobalStyle } from "./GlobalStyle";
 function App() {
   const [result, setResult] = useState();
 
@@ -19,6 +20,7 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Container>
         <Clock />
         <Form result={result} calculateResult={calculateResult} />
