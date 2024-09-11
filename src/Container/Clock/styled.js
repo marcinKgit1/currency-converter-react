@@ -5,5 +5,5 @@ export const Wrapper = styled.div`
   font-family: "Anonymous Pro", monospace;
   font-weight: 400;
   font-style: normal;
-  color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.black};
 `;
