@@ -41,7 +41,7 @@ export const Select = styled.select`
 export const Button = styled.button`
   padding: 5px;
   border: 1px solid ${({ theme }) => theme.color.pomegranate};
-  width: 20%;
+  min-width: 25%;
   border-radius: 30px;
   background-color: ${({ theme }) => theme.color.pomegranate};
   color: ${({ theme }) => theme.color.white};
