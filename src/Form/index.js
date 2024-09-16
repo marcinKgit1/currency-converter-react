@@ -1,10 +1,32 @@
 import { useState } from "react";
-import { currencies } from "../currencies";
 import { Result } from "./Result";
-import { Button, Field, Legend, Select, Value, Wrapper } from "./styled";
+import {
+  Button,
+  Field,
+  Legend,
+  Select,
+  Value,
+  Wrapper,
+  Loading,
+  Failure,
+} from "./styled";
+import { useRatesData } from "../useRatesData";
 
-export const Form = ({ calculateResult, result }) => {
-  const [currency, setCurrency] = useState(currencies[0].short);
+export const Form = () => {
+  const [result, setResult] = useState();
+  const ratesData = useRatesData();
+
+  const calculateResult = (currency, amount) => {
+    const rate = ratesData.data;
+
+    setResult({
+      sourceAmount: +amount,
+      targetAmount: amount * rate,
+      currency,
+    });
+  };
+
+  const [currency, setCurrency] = useState("");
   const [amount, setAmount] = useState("");
 
   const onSubmit = (event) => {
@@ -12,47 +34,54 @@ export const Form = ({ calculateResult, result }) => {
     calculateResult(currency, amount);
   };
   return (
-    <>
-      <form className="form" onSubmit={onSubmit}>
-        <Wrapper>
-          <Legend>Przelicznik walut</Legend>
-          <p>
-            <label>
-              <Value> Kwota w PLN*: </Value>
-              <Field
-                value={amount}
-                onChange={({ target }) => setAmount(target.value)}
-                type="number"
-                step="0.01"
-                min="1"
-                placeholder="wpisz kwotę"
-                required
-              />
-            </label>
-          </p>
-          <p>
-            <label>
-              <Value>Wybierz walutę:</Value>
+    <form className="form" onSubmit={onSubmit}>
+      <Wrapper>
+        <Legend>Przelicznik walut</Legend>
+        {ratesData.state === "loading" ? (
+          <Loading>ładujemy</Loading>
+        ) : ratesData.state === "error" ? (
+          <Failure>coś poszło nie tak</Failure>
+        ) : (
+          <>
+            <p>
+              <label>
+                <Value> Kwota w PLN*: </Value>
+                <Field
+                  value={amount}
+                  onChange={({ target }) => setAmount(target.value)}
+                  type="number"
+                  step="0.01"
+                  min="1"
+                  placeholder="wpisz kwotę"
+                  required
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                <Value>Wybierz walutę:</Value>
 
-              <Select
-                value={currency}
-                onChange={({ target }) => setCurrency(target.value)}
-              >
-                {currencies.map((currency) => (
-                  <option key={currency.short} value={currency.short}>
-                    {currency.name}
-                  </option>
-                ))}
-              </Select>
-            </label>
-          </p>
-          <p>
-            <Button>Przelicz</Button>
-          </p>
-        </Wrapper>
-        <Result result={result} />
-      </form>
-    </>
+                <Select
+                  value={currency}
+                  onChange={({ target }) => setCurrency(target.value)}
+                >
+                  {Object.keys(ratesData.data || {}).map((currency) => (
+                    <option key={currency} value={currency}>
+                      {currency}
+                    </option>
+                  ))}
+                </Select>
+              </label>
+            </p>
+
+            <p>
+              <Button>Przelicz</Button>
+            </p>
+          </>
+        )}
+      </Wrapper>
+      <Result result={result} />
+    </form>
   );
 };
 export default Form;
