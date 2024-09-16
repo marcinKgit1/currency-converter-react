@@ -17,7 +17,7 @@ export const Form = () => {
   const ratesData = useRatesData();
 
   const calculateResult = (currency, amount) => {
-    const rate = ratesData.data;
+    const rate = ratesData.data[currency].value;
 
     setResult({
       sourceAmount: +amount,
