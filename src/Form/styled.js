@@ -55,10 +55,10 @@ export const Button = styled.button`
   }
 `;
 
-export const Loading = styled.p`
+export const Loading = styled.div`
   color: ${({ theme }) => theme.color.white};
 `;
 
 export const Failure = styled.p`
-  color: ${({ theme }) => theme.color.pomegranate};
+  color: ${({ theme }) => theme.color.white};
 `;
