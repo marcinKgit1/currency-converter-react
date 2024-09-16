@@ -38,9 +38,14 @@ export const Form = () => {
       <Wrapper>
         <Legend>Przelicznik walut</Legend>
         {ratesData.state === "loading" ? (
-          <Loading>ładujemy</Loading>
+          <Loading>
+            Momencik... <br /> Ładujemy Twoje dane💰💰💰{" "}
+          </Loading>
         ) : ratesData.state === "error" ? (
-          <Failure>coś poszło nie tak</Failure>
+          <Failure>
+            Coś poszło nie tak...
+            <br /> Pracujemy nad tym🕵️
+          </Failure>
         ) : (
           <>
             <p>
