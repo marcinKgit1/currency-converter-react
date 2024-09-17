@@ -1,7 +1,5 @@
 import Form from "./Form";
 import Container from "./Container";
-import { useState } from "react";
-import { currencies } from "./currencies";
 import { Clock } from "./Container/Clock";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
