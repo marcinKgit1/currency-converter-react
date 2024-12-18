@@ -9,6 +9,7 @@ import {
   Wrapper,
   Loading,
   Failure,
+  Info,
 } from "./styled";
 import { useRatesData } from "../useRatesData";
 
@@ -86,6 +87,7 @@ export const Form = () => {
         )}
       </Wrapper>
       <Result result={result} />
+      <Info>kursy aktualne na dzień: {ratesData.date}</Info>
     </form>
   );
 };

@@ -62,3 +62,7 @@ export const Loading = styled.div`
 export const Failure = styled.p`
   color: ${({ theme }) => theme.color.white};
 `;
+
+export const Info = styled.p`
+  color: ${({ theme }) => theme.color.white};
+`;
