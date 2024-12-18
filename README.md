@@ -6,7 +6,7 @@ https://marcinkgit1.github.io/currency-converter-react/
 
 ### Description
 
-I have created simple cuurency-converter which allows You to convert Polish Zloty to USD, EUR or GBP. Enjoy!
+I have created simple cuurency-converter which allows You to convert Polish Zloty to USD, EUR or GBP. Currency rates are downloaded from an open API. Enjoy!
 
 ### Preview
 
