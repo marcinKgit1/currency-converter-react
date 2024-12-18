@@ -15,7 +15,10 @@ export const useRatesData = () => {
         if (!response.ok) {
           throw new Error(response.statusText);
         }
-        const { data, date } = await response.json();
+        const responseData = await response.json();
+
+        const { data } = responseData;
+        const date = responseData.meta.last_updated_at || "Brak daty";
 
         setRatesData({
           state: "success",
