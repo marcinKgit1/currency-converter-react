@@ -8,8 +8,9 @@ export const useRatesData = () => {
   useEffect(() => {
     const fetchRates = async () => {
       try {
+        const apiKey = process.env.REACT_APP_CURRENCY_API_KEY;
         const response = await fetch(
-          "https://api.currencyapi.com/v3/latest?apikey=cur_live_x8vKi7iE8zCeHSkdXdSOFd5uvwEABaaxczJDsPG4&currencies=EUR%2CUSD%2CGBP%2CCHF&base_currency=PLN"
+          `https://api.currencyapi.com/v3/latest?apikey=${apiKey}&currencies=EUR%2CUSD%2CGBP%2CCHF&base_currency=PLN`
         );
 
         if (!response.ok) {
@@ -31,7 +32,7 @@ export const useRatesData = () => {
         });
       }
     };
-    setTimeout(fetchRates, 1000);
+    fetchRates();
   }, []);
 
   return ratesData;

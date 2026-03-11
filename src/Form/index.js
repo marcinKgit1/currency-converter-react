@@ -17,13 +17,14 @@ export const Form = () => {
   const [result, setResult] = useState();
   const ratesData = useRatesData();
 
-  const calculateResult = (currency, amount) => {
-    const rate = ratesData.data[currency].value;
+  const calculateResult = (selectedCurrency, amount) => {
+    const rateData = ratesData.data?.[selectedCurrency];
+    if (!rateData) return;
 
     setResult({
       sourceAmount: +amount,
-      targetAmount: amount * rate,
-      currency,
+      targetAmount: amount * rateData.value,
+      currency: selectedCurrency,
     });
   };
 
@@ -40,12 +41,12 @@ export const Form = () => {
         <Legend>Przelicznik walut</Legend>
         {ratesData.state === "loading" ? (
           <Loading>
-            Momencik... <br /> Ładujemy Twoje dane💰💰💰{" "}
+            Momencik... <br /> Ładujemy Twoje dane 💰
           </Loading>
         ) : ratesData.state === "error" ? (
           <Failure>
             Coś poszło nie tak...
-            <br /> Pracujemy nad tym🕵️
+            <br /> Pracujemy nad tym 🕵️
           </Failure>
         ) : (
           <>
@@ -58,7 +59,7 @@ export const Form = () => {
                   type="number"
                   step="0.01"
                   min="1"
-                  placeholder="wpisz kwotę"
+                  placeholder="Wpisz kwotę"
                   required
                 />
               </label>
@@ -66,7 +67,6 @@ export const Form = () => {
             <p>
               <label>
                 <Value>Wybierz walutę:</Value>
-
                 <Select
                   value={currency}
                   onChange={({ target }) => setCurrency(target.value)}
@@ -87,7 +87,9 @@ export const Form = () => {
         )}
       </Wrapper>
       <Result result={result} />
-      <Info>kursy aktualne na dzień: {ratesData.date}</Info>
+      {ratesData.state === "success" && (
+        <Info>Kursy aktualne na dzień: {ratesData.date}</Info>
+      )}
     </form>
   );
 };
