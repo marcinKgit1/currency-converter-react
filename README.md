@@ -10,7 +10,9 @@ A modern, responsive currency converter application built with React. The app al
 
 The application features a sleek, dark-mode Glassmorphism UI, real-time clock, and handles loading and error states gracefully.
 
+### Preview
 
+![converter](public/currency-preview.gif)
 
 ### Technologies used:
 
