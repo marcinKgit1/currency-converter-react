@@ -6,57 +6,56 @@ https://marcinkgit1.github.io/currency-converter-react/
 
 ### Description
 
-I have created simple cuurency-converter which allows You to convert Polish Zloty to USD, EUR or GBP. Currency rates are downloaded from an open API. Enjoy!
+A modern, responsive currency converter application built with React. The app allows you to convert Polish Zloty (PLN) to USD, EUR, GBP, and CHF. Currency rates are dynamically downloaded from the [currencyapi.com](https://currencyapi.com/) API. 
+
+The application features a sleek, dark-mode Glassmorphism UI, real-time clock, and handles loading and error states gracefully.
 
 ### Preview
 
+_(Note: The preview image will be updated soon to reflect the new Glassmorphism design)_
 ![converter](kantor.gif)
 
 ### Technologies used:
 
-- React
-- HTML
-- CSS
+- React (Hooks: `useState`, `useEffect`, Custom Hooks)
+- HTML & Modern CSS (Glassmorphism, Gradients)
 - JavaScript ES6+
-- Immutability
-- BEM
-- Styled-Components
-- React useState Hook
-- React custom Hook
+- Configured with `react-scripts`
+- Styled-Components for component-scoped styling
+- Google Fonts (Outfit)
+
+---
+
+## 🔒 Setup & Authentication (Important)
+
+To run this project locally, you must provide your own API key for the currency rates. The codebase expects this key to be injected via environment variables.
+
+1. Get a free API key from [currencyapi.com](https://currencyapi.com/).
+2. Create a file named `.env` in the root directory.
+3. Add your key like this:
+   ```env
+   REACT_APP_CURRENCY_API_KEY=your_api_key_here
+   ```
+4. **Never commit the `.env` file to version control.** It is already added to `.gitignore`.
+
+---
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install`
+Installs all required dependencies (including `react-scripts`). **Run this first!**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm start` or `npm run dev`
+Runs the app in development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
+Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `npm run deploy`
+Automatically builds the project and deploys it to the `gh-pages` branch for GitHub Pages hosting.
